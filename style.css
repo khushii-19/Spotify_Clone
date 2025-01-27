@@ -1,0 +1,221 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,700&family=Roboto:wght@400;500;700&display=swap');
+
+
+
+*{
+    margin: 0px;
+    padding:0px;
+}
+
+body{
+    background-color: black;
+    font-family: 'Nunito Sans', sans-serif;
+    color: white;
+}
+
+/* styling left  */
+
+.left{
+    width:25vw; 
+}
+
+.right{
+    width:75vw;
+}
+
+.logo{
+    margin-left: 8px;
+}
+
+.upper ul{
+ margin-top: 10px;
+}
+
+.upper ul li{
+    text-decoration: none;
+    display: flex;
+    width:28px;
+    gap: 9px;
+    padding:8px;
+    color: white;
+    font-weight: 700;
+}
+
+.heading img{
+    width:23px;
+}
+
+.library{
+  min-height:71vh;
+  position: relative;
+}
+
+.heading{
+    gap:15px;
+    font-weight: 700;
+    font-size:13px;
+}
+
+.footer1 a{
+    color: grey;
+    text-decoration: none;
+}
+
+.footer1{
+    display: flex;
+    font-size: 8px;
+    gap:6px;
+    position: absolute;
+    bottom:0;
+    margin:23px;
+}
+
+/* right side */
+
+.right{
+   margin:8px 0px;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    background-color: #101010;
+}
+
+/* to refer direct header children */
+.header > *{
+    padding:7px;
+}
+
+.header .nav{
+    padding:17px;
+}
+
+/* spotify playlists card styling */
+.spotifyPlaylists{
+    padding:20px;
+    background-color: #1e1e1e;
+    min-height: 84vh;
+    position: relative;
+}
+
+.cardsContainer{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap:17px;
+}
+
+.spotifyPlaylists .card{
+width:160px;
+background-color: #161616;
+padding:13px;
+position: relative;
+}
+
+.spotifyPlaylists .play{
+    right: 24px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    background-color: #1ed760;
+    top: 122px;
+    opacity:0;
+    transition: all 0.3s ease-in-out;
+}
+
+.spotifyPlaylists .card:hover .play {
+    opacity: 1;
+    position: absolute;
+    top: 112px;
+    right: 24px;
+}
+
+.spotifyPlaylists .play svg{
+    width: 52%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 51%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+}
+
+.spotifyPlaylists .card img{
+    width:100%;
+    object-fit: contain;
+    
+}
+
+.spotifyPlaylists .card >*{
+    margin-top: 7px;
+}
+
+.spotifyPlaylists .card p{
+    color: #a7a7a7;
+    font-size: 13px;
+    font-weight: 20;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* button styling */
+
+button{
+all:initial; /*if button ki styling ko reset krna h*/
+}
+
+.buttons{
+    padding-right: 22px;
+}
+
+.signbtn{
+    color: #a7a7a7;
+    background-color: #101010;
+    border: none;
+    padding-right: 28px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.signbtn:hover{
+    font-weight: 1700;
+    font-size: 17px;
+    color: whitesmoke;
+}
+
+.lognbtn{
+    background-color: white;
+    padding: 13px 32px;
+    font-family: 'Nunito Sans', sans-serif;
+    border-radius: 33px;
+}
+
+.lognbtn:hover{
+   background-color: rgb(243, 249, 248);
+   font-size: 17px;
+   font-weight: 900;
+}
+
+/* styling plabar */
+.playbar{
+    position: absolute;
+    bottom: 13px;;
+    height: 48px;
+    background-color: beige;
+    width:97%;
+}
+
+.playbar .songbuttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:12px;
+    gap:9px;
+}
+
+
