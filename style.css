@@ -57,6 +57,35 @@ body{
     font-size:13px;
 }
 
+.songlist ul {
+    padding: 0px 34px;
+}
+
+.songlist ul li{
+    list-style-type: decimal;
+    display: flex;
+    gap: 3px;
+    cursor: pointer;
+    padding: 7px 0px;
+    border: 1px solid white;
+    margin: 14px 0;
+    border-radius: 4px;
+    padding: 10px;
+}
+  
+.playnow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+.playnow span{
+    font-size: 15px;
+    padding: 13px;
+    width: 68px;
+
+}
+
 .footer1 a{
     color: grey;
     text-decoration: none;
