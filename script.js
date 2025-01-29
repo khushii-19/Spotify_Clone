@@ -1,4 +1,6 @@
 console.log('Lets write some javascript');
+let currentSong = new Audio();
+
 
 async function getSongs() {
 
@@ -18,25 +20,44 @@ async function getSongs() {
     return songs;
 }
 
+const playMusic = (track)=>{
+    currentSong.src ="/songs/" + track
+    currentSong.play()
+}
+
+
 async function main() {
+
+    
+
     //getting list of songs
     let songs = await getSongs()
     console.log(songs);
 
+    // show all  the songs in the playlist
     let songUL = document.querySelector(".songlist").getElementsByTagName("ul")[0]
     for (const song of songs) {
-        songUL.innerHTML = songUL.innerHTML + `<li>${song.replaceAll("%20", " ")} </li>`;
-    }  
+        songUL.innerHTML = songUL.innerHTML + `<li>
+        <img class="invert" src="music.svg" alt="">
+                            <div class="info">
+                                <div>${song.replaceAll("%20", " ")}</div>
+                                <div>Khushi</div>
+                            </div>    
+                                <div class="playnow">
+                                    <span>Play Now</span>
+                                    <img class="invert" src="playbtn.svg" alt="">
+                                </div> 
+                                </li>`;
+    }
 
-    //play the first song
-    var audio = new Audio(songs[0]);
-    audio.play(); 
+    // attach an event listener to every song
+    Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach(e => {
+        e.addEventListener("click", element => {
+            console.log(e.querySelector(".info").firstElementChild.innerHTML)
+            playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
+        })
 
-    audio.addEventListener("loadeddata", () => {
-        let duration = audio.duration;
-        console.log(duration)
-        // The duration variable now holds the duration (in seconds) of the audio clip
-      });  
+    })
 
 }
 main()

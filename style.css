@@ -57,8 +57,14 @@ body{
     font-size:13px;
 }
 
+.songlist{
+    height: 450px;
+    overflow: auto;
+    margin-bottom: 44px;
+}
+
 .songlist ul {
-    padding: 0px 34px;
+    padding: 10px;
 }
 
 .songlist ul li{
@@ -71,8 +77,15 @@ body{
     margin: 14px 0;
     border-radius: 4px;
     padding: 10px;
+    justify-content: space-between;
+    
 }
   
+.songlist .info{
+    font-size: 15px;
+    width: 333px;
+}
+
 .playnow{
     display: flex;
     justify-content: center;
@@ -81,7 +94,7 @@ body{
 
 .playnow span{
     font-size: 15px;
-    padding: 13px;
+    padding: 8px;
     width: 68px;
 
 }
@@ -232,11 +245,12 @@ all:initial; /*if button ki styling ko reset krna h*/
 
 /* styling plabar */
 .playbar{
-    position: absolute;
-    bottom: 13px;;
+    position: fixed;
+    bottom: 30px;;
     height: 48px;
-    background-color: beige;
-    width:97%;
+    background-color: rgb(200 200 198);
+    width:70vw;
+    filter: invert(1);
 }
 
 .playbar .songbuttons {
@@ -247,4 +261,28 @@ all:initial; /*if button ki styling ko reset krna h*/
     gap:9px;
 }
 
+.seekbar{
+    height: 2px;
+    width:  98%;
+    border : 2px solid black;
+    position: absolute;
+    bottom: 2px;
+    margin : 0 7px 0 5px;
+    border-radius : 10px;
 
+}
+
+.circle{
+    width:13px;
+    height:13px;
+    background-color: black;
+    position: relative;
+    bottom : 6px;
+    border-radius: 13px;
+    left:0%;
+    transition: left 0.5s;
+}
+
+.songbuttons img{
+    cursor: pointer;
+}

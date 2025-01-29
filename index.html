@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotify Clone</title>
+    <title>Spotify Clone: Music Player</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="utility.css">
 </head>
@@ -28,17 +28,7 @@
                 </div>
                 <div class="songlist">
                     <ul>
-                        <li>
-                            <img class="invert" src="music.svg" alt="">
-                            <div class="info">
-                                <div>Song Name</div>
-                                <div>Artist</div>
-                            </div>    
-                                <div class="playnow">
-                                    <span>Play Now</span>
-                                    <img class="invert" src="playbtn.svg" alt="">
-                                </div>
-                        </li>
+                        
                     </ul>
                 </div>
                 <div class="footer1">
@@ -81,11 +71,16 @@
                     </div>
                 </div>
             <div class="playbar">
+                <div class="seekbar">
+                    <div class="circle">
+                        
+                    </div>
+                </div>
                 <div class="songinfo"></div>
              <div class="songbuttons">
-                <img src="left.svg" alt="">
-                <img src="playbtn.svg" alt="">
-                <img src="right.svg" alt="">
+                <img id="prev" src="left.svg" alt="">
+                <img id="play" src="playbtn.svg" alt="">
+                <img id="next" src="right.svg" alt="">
              </div>
              <div class="songtime"></div>
             </div>
