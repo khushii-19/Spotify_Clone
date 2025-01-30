@@ -269,7 +269,8 @@ all:initial; /*if button ki styling ko reset krna h*/
     bottom: 2px;
     margin : 0 7px 0 5px;
     border-radius : 10px;
-
+    cursor: pointer;
+    color: black;
 }
 
 .circle{
@@ -283,6 +284,16 @@ all:initial; /*if button ki styling ko reset krna h*/
     transition: left 0.5s;
 }
 
+.songinfo ,.songtime{
+    color: black;
+    padding : 6px 12px;
+}
+
 .songbuttons img{
     cursor: pointer;
+}
+
+.aboverbar{
+    display: flex;
+    justify-content: space-between;
 }
