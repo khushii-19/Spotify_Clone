@@ -1,11 +1,12 @@
 console.log('Lets write some javascript');
 let currentSong = new Audio();
+let songs;
 
 // defining secondsToMinutesSeconds
 
 function secondsToMinutesSeconds(seconds) {
     if (isNaN(seconds) || seconds < 0) {
-        return "Invalid input";
+        return "00:00";
     }
 
     const minutes = Math.floor(seconds / 60);
@@ -105,13 +106,6 @@ async function main() {
     })
 
 
-    // add an event listener to seekbar
-    // document.querySelector(".seekbar").addEventListener("click", e=>{
-    //     let percent = (e.offsetX/e.target.getboundingRect().width) *100
-    //     document.querySelector(".circle").style.left = percent + "%"
-    //     currentSong.currentTime = (currentSong.duration)*percent/100;
-    // })
-
     // Add an event listener to seekbar
     document.querySelector(".seekbar").addEventListener("click", (e) => {
         let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
@@ -119,6 +113,39 @@ async function main() {
         currentSong.currentTime = (currentSong.duration * percent) / 100;
     });
 
+    // add an event listener to previous and next
+    prev.addEventListener("click",()=>{
+        currentSong.pause()
+        console.log("previous cicked")
+        console.log(currentSong)
+        let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0])
+        console.log(currentSong.src.split("/").slice(-1)[0])
 
+    
+    if((index-1)>= 0){
+        playMusic(songs[index-1])
+    }
+    })
+
+    
+    next.addEventListener("click", ()=>{
+        currentSong.pause()
+        console.log("next cicked")
+
+        let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0])
+        console.log(currentSong.src.split("/").slice(-1)[0])
+
+    
+    if((index+1)< songs.length){
+        playMusic(songs[index+1])
+    }
+    })
+
+
+    // add an event to volume
+    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e)=>{
+        console.log("Setting volume to", e, e.target, e.target.value)
+        currentSong.volume = parseInt(e.target.value)/100;
+    })
 }
 main()
