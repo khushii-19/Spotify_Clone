@@ -133,6 +133,13 @@ body {
     padding: 17px;
 }
 
+.hamburgercont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+}
+
 /* spotify playlists card styling */
 .spotifyPlaylists {
     padding: 20px;
@@ -154,6 +161,7 @@ body {
     background-color: #161616;
     padding: 13px;
     position: relative;
+    transition:all 0.9s;
 }
 
 .spotifyPlaylists .play {
@@ -167,6 +175,11 @@ body {
     top: 122px;
     opacity: 0;
     transition: all 0.3s ease-in-out;
+}
+
+.card:hover{
+    background-color: rgb(44, 42, 42);
+    cursor: pointer;
 }
 
 .spotifyPlaylists .card:hover .play {
@@ -204,6 +217,10 @@ body {
 }
 
 /* button styling */
+
+.hamburger{
+    display: none;
+}
 
 button {
     all: initial;
@@ -322,17 +339,17 @@ button {
     align-items: center;
 }
 
-
+/* responsiveness */
 
 @media (max-width: 1400px) {
     .left {
         position: absolute;
         left: -100%;
-        transition: left 0.3s ease-in-out;
+        transition: all .3s;
         z-index: 1;
-        width: 233px;
+        width: 453px;
         display: none;
-        /* Hide for smooth effect */
+        background-color: black;
     }
 
     .right {
@@ -344,9 +361,9 @@ button {
         width: 95vw;
     }
 
-    /* .spotifyPlaylists {
-        min-height: auto;
-    } */
-
+    .hamburger{
+        display: block;
+        cursor: pointer;
+    }
 
 }

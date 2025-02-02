@@ -114,38 +114,43 @@ async function main() {
     });
 
     // add an event listener to previous and next
-    prev.addEventListener("click",()=>{
+    prev.addEventListener("click", () => {
         currentSong.pause()
         console.log("previous cicked")
         console.log(currentSong)
         let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0])
         console.log(currentSong.src.split("/").slice(-1)[0])
 
-    
-    if((index-1)>= 0){
-        playMusic(songs[index-1])
-    }
+
+        if ((index - 1) >= 0) {
+            playMusic(songs[index - 1])
+        }
     })
 
-    
-    next.addEventListener("click", ()=>{
+
+    next.addEventListener("click", () => {
         currentSong.pause()
         console.log("next cicked")
 
         let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0])
         console.log(currentSong.src.split("/").slice(-1)[0])
 
-    
-    if((index+1)< songs.length){
-        playMusic(songs[index+1])
-    }
+
+        if ((index + 1) < songs.length) {
+            playMusic(songs[index + 1])
+        }
     })
 
 
     // add an event to volume
-    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e)=>{
+    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e) => {
         console.log("Setting volume to", e, e.target, e.target.value)
-        currentSong.volume = parseInt(e.target.value)/100;
+        currentSong.volume = parseInt(e.target.value) / 100;
+    })
+
+    // add event listener for hamburger
+    document.querySelector(".hamburger").addEventListener("click", ()=>{
+        document.querySelector(".left").style.left = "0"
     })
 }
 main()
