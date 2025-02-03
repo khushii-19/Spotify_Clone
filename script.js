@@ -148,9 +148,22 @@ async function main() {
         currentSong.volume = parseInt(e.target.value) / 100;
     })
 
+
     // add event listener for hamburger
-    document.querySelector(".hamburger").addEventListener("click", ()=>{
-        document.querySelector(".left").style.left = "0"
-    })
+    document.querySelector(".hamburger").addEventListener("click", () => {
+        console.log("hamburger clicked");
+        document.querySelector(".left").style.left = "0px";
+
+    });
+
+
+    // add event listener for hamburger close
+    document.querySelector(".close").addEventListener("click", () => {
+        console.log("Cross clicked!");  
+        document.querySelector(".left").style.left = "-120%";  // Hide menu
+    });
+
 }
 main()
+
+
