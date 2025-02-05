@@ -368,7 +368,7 @@ button {
         transition: left 0.3s ease-in-out !important;
         z-index: 1 !important;
         width: 403px;
-        background-color: black;
+        background-color: rgb(37, 37, 37);
         padding: 0px;
     }
 
