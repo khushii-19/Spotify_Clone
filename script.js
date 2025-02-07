@@ -66,6 +66,7 @@ async function getSongs(folder) {
     })
 }
 
+
 const playMusic = (track, pause = false) => {
     currentSong.src = `/${currfolder}/` + track
     if (!pause) {
@@ -77,32 +78,45 @@ const playMusic = (track, pause = false) => {
 }
 
 async function displayAlbumns() {
-
     let a = await fetch(`http://127.0.0.1:5501/songs/`)
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
     let anchors = div.getElementsByTagName("a")
+    console.log(anchors)
     let cardsContainer = document.querySelector(".cardsContainer")
-    Array.from(anchors).forEach(async e=> {
-        if (e.href.includes("/songs")) {
-            let folder = e.href.split("/").slice(-2)[0]
-            //    get the metadata of the folder
-            let a = await fetch(`http://127.0.0.1:5501/songs/${folder}/info.json`)
-            let response = await a.json();
-            console.log(response)
-            cardsContainer.innerHTML = cardsContainer.innerHTML + `<div data-folder="cs" class="card rounded">
-                        <div class="play"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="fille" class="injected-svg" data-src="/icons/play-stroke-sharp.svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" color="#000000">
-                                  <path d="M5 20V4L19 12L5 20Z" stroke="#000000" stroke-width="1.5" stroke-linejoin="round"></path>
-                                </svg>
-                        </div>
-                        <img class="rounded" src="/songs/${folder}/cover.jpg" alt="">
-                        <h4>${response.title}</h4>
-                        <p>${response.description} </p>
-                    </div>`
+    let array = Array.from(anchors)
+        for (let index = 0; index < array.length; index++) {
+            const e = array[index];
+        if (e.href.includes("/songs")) {  
+            let folder = e.href.split("/").slice(-1)[0]
+
+       //    get the metadata of the folder
+    if(folder !== "songs"){
+        let a = await fetch(`http://127.0.0.1:5501/songs/${folder}/info.json`)
+        let response = await a.json();
+        cardsContainer.innerHTML = cardsContainer.innerHTML + `<div data-folder=${folder} class="card rounded">
+        <div class="play"> 
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="fille" class="injected-svg" data-src="/icons/play-stroke-sharp.svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" color="#000000">
+        <path d="M5 20V4L19 12L5 20Z" stroke="#000000" stroke-width="1.5" stroke-linejoin="round"></path>
+        </svg>
+        </div>
+        <img class="rounded" src="/songs/${folder}/cover.jpg" alt="">
+        <h4>${response.title}</h4>
+        <p>${response.description} </p>
+        </div>`
         }
+        }
+    }
+
+    // load the songs/playlist when card is clicked
+    Array.from(document.getElementsByClassName("card")).forEach(e => {
+        e.addEventListener("click", async items => {
+            songs = await getSongs(`songs/${items.currentTarget.dataset.folder}`)
+
+        })
     })
+
 }
 
 async function main() {
@@ -192,14 +206,20 @@ async function main() {
         document.querySelector(".left").style.left = "-120%";  // Hide menu
     });
 
-    // load the songs/playlist when card is clicked
-    Array.from(document.getElementsByClassName("card")).forEach(e => {
-        e.addEventListener("click", async items => {
-            songs = await getSongs(`songs/${items.currentTarget.dataset.folder}`)
-
-        })
+    // add an event listener to mute the volumne
+    document.querySelector(".volume>img").addEventListener("click", e=>{
+        console.log(e.target)
+        if(e.target.src.includes("volume.svg")){
+            e.target.src = e.target.src.replace("volume.svg","mute.svg")
+            currentSong.volume = 0;
+            document.querySelector(".range").getElementsByTagName("input")[0].value = 0;
+        }
+        else{
+            e.target.src = e.target.src.replace("mute.svg","volume.svg")
+            currentSong.volume = .10;
+            document.querySelector(".range").getElementsByTagName("input")[0].value = 10;
+        }
     })
-
 
 
 

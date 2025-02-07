@@ -353,6 +353,11 @@ button {
     gap:12px;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+}
+
+.range input{
+    cursor: pointer;
 }
 
 .left .close{
